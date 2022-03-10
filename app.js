@@ -10,6 +10,7 @@ app.use((req, res, next) => {
 
 app.get('/sounds', (req, res) => {
   const birdName = req.query.bird;
+  console.log({ query: req.query.bird });
   request(
     { url: `https://www.xeno-canto.org/api/2/recordings?query=${birdName}` },
     (error, response, body) => {
