@@ -8,9 +8,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/sounds/', (req, res) => {
+app.get('/', (req, res) => {
+  const birdName = req.query.bird;
   request(
-    { url: `https://www.xeno-canto.org/api/2/recordings?query=${birdQuery}` },
+    { url: `https://www.xeno-canto.org/api/2/recordings?query=${birdName}` },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: error.message });
@@ -21,5 +22,5 @@ app.get('/sounds/', (req, res) => {
   );
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
