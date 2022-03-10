@@ -8,7 +8,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
+app.get('/sounds', (req, res) => {
   const birdName = req.query.bird;
   request(
     { url: `https://www.xeno-canto.org/api/2/recordings?query=${birdName}` },
